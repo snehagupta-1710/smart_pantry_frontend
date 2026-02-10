@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Pantry - Settings</title>
+    <link rel="stylesheet" href="../../css/settings.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav">
+            <button class="back-btn" onclick="history.back()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <h1>Settings</h1>
+        </header>
+
+        <main class="content">
+            <section class="settings-group">
+                <h2 class="group-title">Notification</h2>
+                <div class="card card-stacked">
+                    <div class="setting-item">
+                        <div class="icon-label">
+                            <div class="icon-box"><ion-icon name="hourglass-sharp"></ion-icon></div>
+                            <span class="label-text">Refill Reminders</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="sub-setting">
+                        <label class="sub-label">Reminder timing</label>
+                        <div class="select-wrapper">
+                            <select>
+                                <option>Notify in 3 days before</option>
+                                <option>Notify in 1 day before</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="setting-item">
+                        <div class="icon-label">
+                            <div class="icon-box"><ion-icon name="notifications-outline" class="bell"></ion-icon></div>
+                            <span class="label-text">General Notification</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-group">
+                <h2 class="group-title">Preferences</h2>
+                <div class="card">
+                    <div class="setting-item">
+                        <div class="icon-label">
+                            <div class="icon-box"><ion-icon name="aperture-sharp"></ion-icon></div>
+                            <span class="label-text">Dark Mode</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="settings-group">
+                <h2 class="group-title">Data Mangement</h2>
+                <div class="card alert-card">
+                    <div class="setting-item">
+                        <div class="icon-label">
+                            <div class="icon-box alert-bg"><ion-icon name="trash-sharp"></ion-icon></div>
+                            <span class="label-text alert-text">Clear Pantry Data</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="disclaimer">This action will permanently removen all tracked items,categories and history .This cannot Be undone</p>
+            </section>
+        </main>
+    </div>
+    <script src="../../js/settings/settings.js"></script>
+</body>
+</html>

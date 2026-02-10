@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Pantry - Notifications</title>
+    <link rel="stylesheet" href="../../css/notifications.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-viewport">
+        <header class="top-nav">
+            <button class="back-btn" onclick="history.back()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <h1>Notifications</h1>
+            <button class="clear-all" id="clearAll">Clear</button>
+        </header>
+
+        <main class="content">
+            <div class="time-group">
+                <h2 class="group-label">Today</h2>
+                
+                <div class="notif-card unread">
+                    <div class="status-dot"></div>
+                    <div class="notif-icon low-stock-bg"><ion-icon name="alert-circle"></ion-icon></div>
+                    <div class="notif-text">
+                        <h3>Low Stock Alert!</h3>
+                        <p>Your <b>Basmati Rice</b> is down to 200g. It might run out in 2 days.</p>
+                        <span class="timestamp">2 mins ago</span>
+                    </div>
+                </div>
+
+                <div class="notif-card unread">
+                    <div class="status-dot"></div>
+                    <div class="notif-icon refill-bg"><ion-icon name="cube"></ion-icon></div>
+                    <div class="notif-text">
+                        <h3>Restock Successful</h3>
+                        <p>Wheat (5kg) has been added to your pantry.</p>
+                        <span class="timestamp">1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-group">
+                <h2 class="group-label">Earlier</h2>
+
+                <div class="notif-card">
+                    <div class="notif-icon system-bg"><ion-icon name="bulb"></ion-icon></div>
+                    <div class="notif-text">
+                        <h3>Smart Tip</h3>
+                        <p>Try setting a daily usage limit for Coffee to make it last longer.</p>
+                        <span class="timestamp">Yesterday</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../js/notifications/notifications.js"></script>
+</body>
+</html>

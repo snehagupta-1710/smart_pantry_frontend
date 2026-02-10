@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Pantry - Edit Profile</title>
+    <link rel="stylesheet" href="../../css/profile-edit.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-viewport">
+        <header class="top-nav">
+            <button class="back-btn" onclick="history.back()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <h1>Edit Profile</h1>
+            <div style="width: 24px;"></div> </header>
+
+        <main class="content">
+            <section class="photo-edit-section">
+                <div class="avatar-container">
+                    <img id="profilePreview" src="https://ui-avatars.com/api/?name=Sneha+Gupta&background=b6ff00&color=000&size=128" alt="Profile">
+                
+                </div>
+            </section>
+
+            <form class="edit-form" id="editProfileForm">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" value="Sneha Gupta" placeholder="Enter your name">
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" value="snehagupta@gmail.com" placeholder="Enter your email">
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" value="+91 98765 43210" placeholder="Enter phone number">
+                </div>
+
+                <div class="input-group">
+                    <label>Location</label>
+                    <input type="text" value="Mumbai, India" placeholder="Enter city/state">
+                </div>
+
+                <div class="action-buttons">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <button type="button" class="cancel-link" onclick="history.back()">Cancel</button>
+                </div>
+            </form>
+        </main>
+    </div>
+    <script src="../../js/settings/profile-edit.js"></script>
+</body>
+</html>

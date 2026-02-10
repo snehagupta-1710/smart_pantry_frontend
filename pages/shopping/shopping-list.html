@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Pantry - Direct Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        :root {
+            --primary: #1b4332;
+            --accent: #b6ff00;
+            --white: #ffffff;
+            --gray: #f4f4f4;
+        }
+
+        body { font-family: 'Poppins', sans-serif; background-color: var(--gray); margin: 0; padding: 20px; }
+        
+        .header { margin-bottom: 25px; }
+        .header h1 { font-size: 22px; color: var(--primary); margin: 0; }
+        .header p { font-size: 12px; color: #666; }
+
+        .container { max-width: 95%; margin: 0 auto; }
+
+        /* Item Card */
+        .item-card {
+            background: var(--white); border-radius: 25px; padding: 20px;
+            margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .card-top { display: flex; justify-content: space-between; align-items: center; }
+        .item-img { width: 65px; height: 65px; border-radius: 15px; object-fit: cover; }
+
+        .price-list { margin-top: 15px; background: #fafafa; border-radius: 15px; padding: 5px 15px; }
+        .platform-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid #eee;
+        }
+        .platform-row:last-child { border: none; }
+        
+        .platform-info span { font-size: 14px; font-weight: 700; display: block; color: #333; }
+        .platform-info small { color: var(--primary); font-size: 13px; font-weight: 600; }
+
+        .buy-btn {
+            background: #000; color: var(--accent);
+            text-decoration: none; padding: 8px 18px;
+            border-radius: 12px; font-size: 11px; font-weight: 700;
+            transition: 0.3s;
+        }
+.bottom-bar {
+    padding: 15px 20px;
+    background: transparent;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+    padding: 5px 5px 5px 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.plus-icon { font-size: 20px; color: #666; margin-right: 10px; }
+
+#customInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.add-btn {
+    background: #000;
+    color: #ffffff;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 80px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Restock Pantry</h1>
+            <p>Direct links to your favorite products</p>
+        </div>
+
+        <div id="shopping-list"></div>
+    </div>
+
+    <script>
+        // Use specific keywords for 'search' to ensure the store finds the right item
+        const inventory = [
+            { id: "P1", name: "Basmati Rice (5kg)", search: "basmati+rice+5kg", base: 580, img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=100" },
+            { id: "P2", name: "Toor Dal (1kg)", search: "toor+dal+1kg", base: 165, img: "https://images.unsplash.com/photo-1585996772678-844934f054ac?w=100" },
+            { id: "P3", name: "Refined Sugar (1kg)", search: "sugar+1kg", base: 50, img: "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=100" }
+        ];
+
+        // Store Deep Link Templates
+        const stores = [
+            { name: "Instamart", url: "https://www.swiggy.com/search?query=", commission: 0.05 },
+            { name: "Blinkit", url: "https://blinkit.com/s/?q=", commission: 0.04 },
+            { name: "BigBasket", url: "https://www.bigbasket.com/ps/?q=", commission: 0.06 }
+        ];
+
+        let ownerCommission = 0;
+
+        function renderList() {
+            const list = document.getElementById('shopping-list');
+            inventory.forEach(item => {
+                let html = `
+                    <div class="item-card">
+                        <div class="card-top">
+                            <div>
+                                <h3 style="margin:0; font-size:16px;">${item.name}</h3>
+                                <small style="color:red; font-weight:700;">LOW STOCK</small>
+                            </div>
+                            <img src="${item.img}" class="item-img">
+                        </div>
+                        <div class="price-list">
+                `;
+
+                stores.forEach(store => {
+                    // Simulating a live price variation
+                    const price = Math.round(item.base * (0.96 + Math.random() * 0.08));
+                    
+                    html += `
+                        <div class="platform-row">
+                            <div class="platform-info">
+                                <span>${store.name}</span>
+                                <small>₹${price}</small>
+                            </div>
+                            <div style="text-align:right">
+                                <a href="${store.url}${item.search}" target="_blank" 
+                                   class="buy-btn" 
+                                   onclick="processSale(${price}, ${store.commission})">
+                                   BUY
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `</div></div>`;
+                list.innerHTML += html;
+            });
+        }
+
+        function processSale(price, rate) {
+            // Calculate Commission for Owner
+            const earned = price * rate;
+            ownerCommission += earned;
+            document.getElementById('owner-money').innerText = ownerCommission.toFixed(2);
+            
+            // Log to console for owner tracking
+            console.log("SALE LOGGED: Commission of ₹" + earned.toFixed(2) + " tracked.");
+        }
+
+        // Press 'o' key to see the owner dashboard
+        window.addEventListener('keydown', (e) => {
+            if(e.key === 'o') document.getElementById('owner-stats').style.display = 'block';
+        });
+
+        renderList();
+    </script>
+<footer class="bottom-bar">
+            <div class="input-wrapper">
+                <span class="plus-icon">+</span>
+                <input type="text" id="customInput" placeholder="Add Custom items....">
+                <button class="add-btn" id="addBtn">ADD</button>
+            </div>
+        </footer>
+        <script src="../../js/shopping/shopping-list.js"></script>
+</body>
+</html>

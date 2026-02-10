@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smart Pantry - Profile</title>
+    <link rel="stylesheet" href="../../css/profile.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-viewport">
+        <header class="top-nav">
+            <button class="back-btn" onclick="window.location.href='../../pages/home/home.html'">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <h1>My Profile</h1>
+            <button class="edit-profile-btn"><a href="../../pages/settings/profile-edit.html">Edit</a></button>
+        </header>
+
+        <main class="content">
+            <section class="profile-header">
+                <div class="avatar-wrapper">
+                    <img src="https://ui-avatars.com/api/?name=Sneha+Gupta&background=b6ff00&color=000&size=128" alt="Profile Picture">
+                    <div class="online-badge"></div>
+                </div>
+                <h2 class="user-name">Sneha Gupta</h2>
+                <p class="user-email">snehagupta@gmail.com</p>
+            </section>
+
+            <section class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-num">12</span>
+                    <span class="stat-label">Grains</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">3</span>
+                    <span class="stat-label">Running Low</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">4</span>
+                    <span class="stat-label">Refill Items</span>
+                </div>
+            </section>
+
+            <nav class="profile-menu">
+                <div class="menu-item" onclick="window.location.href='../../pages/settings/settings.html'">
+                    <div class="menu-left">
+                        <span class="menu-icon"><ion-icon name="settings"></ion-icon></span>
+                        <span>Settings</span>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+                <div class="menu-item logout">
+                    <div class="menu-left">
+                        <span class="menu-icon"><ion-icon name="log-out"></ion-icon></span>
+                        <a href="../../pages/auth/login.html"><span>Logout</span></a>
+                    </div>
+                </div>
+            </nav>
+        </main>
+    </div>
+    <script src="../../js/settings/profile.js"></script>
+</body>
+</html>

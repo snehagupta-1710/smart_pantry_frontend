@@ -1,0 +1,47 @@
+:root {
+    --primary-bg: #ffffff;
+    --app-green: #b6ff00;
+    --dark-green: #1b4332;
+    --gray-bg: #f8f9fa;
+}
+
+body { font-family: 'Poppins', sans-serif; background: var(--gray-bg); margin: 0; }
+.hidden { display: none !important; }
+.container { padding: 20px; }
+
+/* Grain List Cards */
+.grain-card {
+    background: white; border-radius: 20px; padding: 15px;
+    margin-bottom: 15px; display: flex; align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.grain-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; margin-right: 15px; }
+.grain-info { flex: 1; }
+.grain-info h3 { margin: 0; font-size: 16px; }
+
+/* The Specific Detail Button you requested */
+.detail-btn {
+    background: var(--app-green); color: var(--dark-green);
+    border: none; padding: 6px 12px; border-radius: 8px;
+    font-size: 11px; font-weight: 700; cursor: pointer; margin-top: 8px;
+}
+
+/* Detail Tracking UI (Image 2 style) */
+
+.usage-circle { 
+    width: 160px; height: 160px; border-radius: 50%; 
+    border: 12px solid #eee; border-top-color: var(--app-green);
+    margin: 20px auto; display: flex; align-items: center; justify-content: center;
+}
+.circle-content { text-align: center; }
+.circle-content span { font-size: 28px; font-weight: 800; display: block; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.stat-card { background: white; padding: 15px; border-radius: 15px; text-align: center; }
+
+.action-btn { 
+    width: 100%; padding: 15px; border-radius: 12px; border: none; 
+    background: #000; color: #fff; font-weight: 600; cursor: pointer; 
+}
+
+#admin-bar { display: none; background: #000; color: #0f0; padding: 10px; text-align: center; font-size: 12px; }

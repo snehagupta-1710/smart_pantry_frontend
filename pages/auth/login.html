@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../../css/auth.css" />
+</head>
+<body>
+
+<div class="container fade-in">
+    <div class="illustration">
+  <img src="../../assets/images/illustration.png" alt="auth">
+</div><div class="box"></div>
+  <h1>Welcome back !</h1>
+  <p class="subtitle">Login to your account</p>
+
+  <label>Email</label>
+  <input type="email" id="email" placeholder="eg. sunidha@gmail.com" />
+
+  <label>Password</label>
+  <div class="password-box">
+    <input type="password" id="password" placeholder="••••••••" />
+    <span class="eye">👁️</span>
+  </div>
+
+  <a class="forgot" href="../../pages/auth/forgot-password.html">Forget password ?</a>
+
+  <button class="btn"onclick="handleLogin()">Login</button>
+
+  <p class="switch">
+    Don’t have an account ?
+    <span><a href="../../pages/auth/signup.html">Sign up</a></span>
+  </p>
+</div>
+
+<script src="../../js/auth/login.js"></script>
+</body>
+</html>

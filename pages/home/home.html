@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Pantry - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="../../css/home.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header class="main-header">
+            <div class="header-top">
+               <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+                <h1 class="brand">Smart Pantry</h1>
+                <button class="notif-btn">
+                    <span class="bell-icon"><a href="../../pages/notifications/notifications.html"><ion-icon name="notifications-outline" class="notification"></ion-icon></a></span>
+                </button>
+            </div>
+            <div class="search-container">
+                <span class="search-icon"><ion-icon name="search-outline"></ion-icon></span>
+                <input type="text" placeholder="Search grains, pulses, spices">
+            </div>
+        </header>
+   
+  </div>
+</header>
+</div>
+<!-- DESKTOP SIDEBAR -->
+<aside class="desktop-sidebar" id="desktopSidebar">
+  <div class="sidebar-item active"><a href="../../pages/home/home.html"><ion-icon name="home-outline"></ion-icon>Home</a></div>
+  <div class="sidebar-item"><a href="../../pages/shopping/shopping-list.html"><ion-icon name="list-outline"></ion-icon>List</a></div>
+  <div class="sidebar-item"><a href="../../pages/settings/settings.html"><ion-icon name="settings-outline"></ion-icon>Settings</a></div>
+  <div class="sidebar-item"><a href="../../pages/settings/profile.html"><ion-icon name="person-outline"></ion-icon>Profile</a></div>
+</aside>
+<!-- OVERVIEW -->
+<div class="stat-cards">
+                    <div class="stat-card purple">
+                        <span class="stat-label">Total Items</span>
+                        <span class="stat-num"id="totalItems">12</span>
+                    </div>
+                    <div class="stat-card red">
+                        <span class="stat-label">Low stock</span>
+                        <span class="stat-num" id="lowStock">12</span>
+                    </div>
+                    <div class="stat-card green">
+                        <span class="stat-label">Refill it</span>
+                        <span class="stat-num" id="refillItems">12</span>
+                    </div>
+                </div>
+
+<!-- PANTRY -->
+<section class="list-section">
+                <div class="list-header">
+                    <h2>Your Pantry</h2>
+                    <a href="../../pages/grain/grain-list.html" class="see-all">See all <ion-icon name="caret-forward-outline" class="arrow"></ion-icon></a>
+                </div>
+
+                <div class="grain-list">
+                    <div class="grain-item">
+                        <img src="../../assets/images/illustration.png" alt="Rice">
+                        <div class="grain-details">
+                            <div class="name-row">
+                                <h3>Rice (Basmati)</h3>
+                            </div>
+                            <p class="qty-text">3.2 kg left</p>
+                            <div class="progress-row">
+                                <span class="percent">80% Remaining</span>
+                                <span class="total-qty">3.2kg/5kg</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill healthy" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grain-item">
+                        <img src="../../assets/images/illustration.png" alt="Wheat">
+                        <div class="grain-details">
+                            <div class="name-row">
+                                <h3>Wheat</h3>
+                                <span class="badge low">Low stock</span>
+                            </div>
+                            <p class="qty-text">4.5 kg left</p>
+                            <div class="progress-row">
+                                <span class="percent">20% Remaining</span>
+                                <span class="total-qty">4.5 kg/5kg</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill warning" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grain-item">
+                        <img src="../../assets/images/illustration.png" alt="Rice">
+                        <div class="grain-details">
+                            <div class="name-row">
+                                <h3>Rice (Basmati)</h3>
+                            </div>
+                            <p class="qty-text">3.2 kg left</p>
+                            <div class="progress-row">
+                                <span class="percent">80% Remaining</span>
+                                <span class="total-qty">3.2kg/5kg</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill healthy" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- BOTTOM NAV -->
+ 
+<nav class="bottom-nav">
+  <div class="nav-item active"><a href="../../pages/home/home.html"><ion-icon name="home-outline"></ion-icon></a></div>
+  <div class="nav-item"><a href="../../pages/shopping/shopping-list.html"><ion-icon name="list-outline"></ion-icon></a></div>
+  <div class="add-btn"><a href="../../pages/onboarding/add-grain.html">+</a></div>
+  <div class="nav-item"><a href="../../pages/settings/settings.html"><ion-icon name="settings-outline"></ion-icon></a></div>
+  <div class="nav-item"><a href="../../pages/settings/profile.html"><ion-icon name="person-outline"></ion-icon></a></div>
+</nav>
+<div class="add-btn1"><a href="../../pages/onboarding/add-grain.html">+</a></div>
+<script src="../../utils/normalizeGrain.js"></script>
+<script src="../../js/home/home.js"></script>
+</body>
+</html>

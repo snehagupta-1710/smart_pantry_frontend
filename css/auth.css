@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;   /* 👈 scrolling band */
+  background: linear-gradient(#f7ffd9, #e8f5c8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1,
+.subtitle,
+label,
+input,
+.btn,
+.switch,.forgot {
+  position: relative;
+  z-index: 2;        /* ensures text is above .box */
+}
+
+/* ---------- Main Card ---------- */
+.container {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 30px 24px 8px;
+  position: relative; /* REQUIRED */
+  z-index: 2;
+}
+.box {
+  width: 100%;
+  height: 380px;
+  background: #ffffff;
+  border-radius: 24px;
+
+  position: absolute;
+  top: 185px;        /* controls vertical position */
+  left: 0;
+box-shadow: 0 -8px 20px rgba(59, 110, 5, 0.4);
+  z-index: 1;        /* BELOW text, ABOVE background */
+}
+
+/* ---------- Illustration ---------- */
+.illustration {
+  display: flex;
+  justify-content: center;
+  
+}
+.illustration img {
+  width: 70%;
+  max-height: 180px;   
+  object-fit: contain;
+}
+
+/* ---------- Text ---------- */
+h1 {
+    text-align: center;
+  font-size: 26px;
+}
+
+.subtitle {
+  font-size: 12px;
+  margin-bottom: 16px;
+  margin-top: -10px;
+  text-align: center;
+}
+
+input {
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.btn {
+  padding: 13px;
+  font-size: 16px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 14px;
+  display: block;
+  font-size: 14px;
+}
+
+.password-box {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* ---------- Extras ---------- */
+.forgot {
+  display: block;
+  text-align: right;
+  color: #0a6;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0;
+  font-size: 13px;
+}
+
+/* ---------- Button ---------- */
+.btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 26px;
+  background: black;
+  color: #b6ff00;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 14px;
+}
+
+/* ---------- Switch ---------- */
+.switch {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.switch span {
+  color: #0a6;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------- Animation ---------- */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.4s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+.signup-container {
+  height: 550px;
+  max-height: 680px;
+  overflow: hidden; /* 🚫 no scroll */
+}
+.signup-container .illustration img {
+  width: 60%;
+  max-height: 200px;
+}
+.signup-container h1 {
+  font-size: 22px;
+  margin-top: -20px;
+}
+.signup-container .box{
+  height: 366px;
+}
+.signup-container .subtitle {
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.signup-container label {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.signup-container input {
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.signup-container .btn {
+  padding: 12px;
+  font-size: 15px;
+}
+.signup-container .overlay-box {
+  top: 135px;
+  height: 120px;
+}
+@media (max-width: 480px) {
+  body {
+    display: block;        /* Stop centering horizontally/vertically */
+    overflow-y: auto;      /* Allow scrolling if content is tall */
+    background: #ffffff;   /* Match body to container for full-screen effect */
+    height: auto;
+  }
+.box{
+  height:440px;
+}
+  .container {
+    width: 100%;           /* Fill screen width */
+    max-width: 100%;       /* Remove the 380px limit */
+    min-height: 100vh;     /* Fill screen height */
+    border-radius: 0;      /* Sharp corners look more like an app on mobile */
+    padding: 20px;         /* Give content some breathing room from edges */
+    margin: 0;
+    box-shadow: none;      /* Remove shadow so it doesn't look like a 'floating card' */
+  }
+
+  .illustration img {
+    width: 90%;            /* Make image larger on mobile */
+    max-height: 220px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  h1 {
+    font-size: 28px;       /* Make text clear and legible */
+    margin-top: -20px;
+  }
+
+  /* Make inputs easier to tap with thumbs */
+  input {
+    height: 50px;
+    font-size: 16px;       /* Prevents iOS from auto-zooming on focus */
+  }
+}
+a{
+  list-style-type: none;
+  text-decoration: none;
+  color: black;
+}
