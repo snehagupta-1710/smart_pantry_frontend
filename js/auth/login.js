@@ -1,4 +1,4 @@
-async function handleLogin() {
+/*async function handleLogin() {
   const email = document.querySelector('input[type="email"]').value;
   const password = document.querySelector('input[type="password"]').value;
 
@@ -40,3 +40,4 @@ async function handleLogin() {
     alert("Server error. Please try again later.");
   }
 }
+*/
