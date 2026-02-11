@@ -1,35 +1,34 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", function () {
 
   /* ======================
-      AUTH CHECK
+      FRONTEND DUMMY DATA
   ====================== */
-  const token = localStorage.getItem("token");
+  const grains = [
+    {
+      _id: "1",
+      name: "Basmati Rice",
+      totalQuantity: 5,
+      currentQuantity: 3.2,
+      dailyUsage: 0.2
+    },
+    {
+      _id: "2",
+      name: "Wheat",
+      totalQuantity: 5,
+      currentQuantity: 1,
+      dailyUsage: 0.3
+    },
+    {
+      _id: "3",
+      name: "Toor Dal",
+      totalQuantity: 3,
+      currentQuantity: 2.5,
+      dailyUsage: 0.1
+    }
+  ];
 
-  if (!token) {
-    window.location.href = "../../pages/auth/login.html";
-    return;
-  }
-
-  /* ======================
-      FETCH GRAINS
-  ====================== */
-  try {
-   const res = await fetch("http://127.0.0.1:3000/api/grains", {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`
-  }
-});
-
-let grains = await res.json();
-grains = grains.map(normalizeGrain); // 🔥 IMPORTANT
-
-
-    renderOverview(grains);
-    renderHomeGrains(grains);
-
-  } catch (err) {
-    console.error("Error loading grains:", err);
-  }
+  renderOverview(grains);
+  renderHomeGrains(grains);
 
   /* ======================
       OVERVIEW STATS
@@ -61,6 +60,7 @@ grains = grains.map(normalizeGrain); // 🔥 IMPORTANT
     list.innerHTML = "";
 
     grains.slice(0, 3).forEach(g => {
+
       const percent = Math.round(
         (g.currentQuantity / g.totalQuantity) * 100
       );
@@ -100,12 +100,12 @@ grains = grains.map(normalizeGrain); // 🔥 IMPORTANT
   const desktopSidebar = document.getElementById("desktopSidebar");
 
   if (hamburger && desktopSidebar) {
-    hamburger.addEventListener("click", (e) => {
+    hamburger.addEventListener("click", function (e) {
       e.stopPropagation();
       desktopSidebar.classList.toggle("open");
     });
 
-    document.addEventListener("click", (e) => {
+    document.addEventListener("click", function (e) {
       if (
         !desktopSidebar.contains(e.target) &&
         !hamburger.contains(e.target)
@@ -114,11 +114,12 @@ grains = grains.map(normalizeGrain); // 🔥 IMPORTANT
       }
     });
   }
+
 });
 
 /* ======================
     OPEN GRAIN DETAIL
 ====================== */
 function openGrain(id) {
-  window.location.href = `../../pages/grain/grain-list.html?id=${id}`;
+  window.location.href = "../../pages/grain/grain-list.html";
 }

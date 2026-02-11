@@ -1,29 +1,41 @@
-// Image Preview Logic
-const fileInput = document.getElementById('fileInput');
-const profilePreview = document.getElementById('profilePreview');
+document.addEventListener("DOMContentLoaded", function () {
 
-fileInput.addEventListener('change', function() {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profilePreview.src = e.target.result;
-        }
-        reader.readAsDataURL(file);
+    // ===== Image Preview =====
+    const fileInput = document.getElementById('fileInput');
+    const profilePreview = document.getElementById('profilePreview');
+
+    if (fileInput && profilePreview) {
+        fileInput.addEventListener('change', function () {
+            const file = this.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    profilePreview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
     }
-});
 
-// Form Submission
-document.getElementById('editProfileForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show a quick feedback
-    const btn = document.querySelector('.save-btn');
-    btn.innerText = "Updating...";
-    btn.style.opacity = "0.7";
+    // ===== Form Submission =====
+    const form = document.getElementById('editProfileForm');
 
-    setTimeout(() => {
-        alert("Profile updated successfully!");
-        window.location.href = "profile.html";
-    }, 1000);
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = document.querySelector('.save-btn');
+            btn.innerText = "Updating...";
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                alert("Profile updated successfully!");
+                window.location.href = "../../pages/settings/profile.html";
+            }, 1000);
+        });
+    }
+
 });

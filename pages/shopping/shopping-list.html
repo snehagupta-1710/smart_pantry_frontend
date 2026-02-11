@@ -51,6 +51,42 @@
     background: transparent;
     box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
 }
+.low-stock {
+    color: red;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+
+.price {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.custom-title {
+    margin-top: 25px;
+    font-weight: 700;
+}
+
+.custom-item {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.custom-item button {
+    background: none;
+    border: none;
+    color: red;
+    font-weight: 700;
+    cursor: pointer;
+}
 
 .input-wrapper {
     display: flex;
@@ -81,93 +117,39 @@
     cursor: pointer;
     width: 80px;
 }
+.item-card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.platform-info div {
+    font-size: 16px;
+}
+
+.buy-btn {
+    background: black;
+    color: #b6ff00;
+}
+
     </style>
 </head>
 <body>
+
+ <div class="scroll-area">
     <div class="container">
+        
         <div class="header">
+        
             <h1>Restock Pantry</h1>
             <p>Direct links to your favorite products</p>
         </div>
 
         <div id="shopping-list"></div>
     </div>
+</div>
 
-    <script>
-        // Use specific keywords for 'search' to ensure the store finds the right item
-        const inventory = [
-            { id: "P1", name: "Basmati Rice (5kg)", search: "basmati+rice+5kg", base: 580, img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=100" },
-            { id: "P2", name: "Toor Dal (1kg)", search: "toor+dal+1kg", base: 165, img: "https://images.unsplash.com/photo-1585996772678-844934f054ac?w=100" },
-            { id: "P3", name: "Refined Sugar (1kg)", search: "sugar+1kg", base: 50, img: "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=100" }
-        ];
 
-        // Store Deep Link Templates
-        const stores = [
-            { name: "Instamart", url: "https://www.swiggy.com/search?query=", commission: 0.05 },
-            { name: "Blinkit", url: "https://blinkit.com/s/?q=", commission: 0.04 },
-            { name: "BigBasket", url: "https://www.bigbasket.com/ps/?q=", commission: 0.06 }
-        ];
-
-        let ownerCommission = 0;
-
-        function renderList() {
-            const list = document.getElementById('shopping-list');
-            inventory.forEach(item => {
-                let html = `
-                    <div class="item-card">
-                        <div class="card-top">
-                            <div>
-                                <h3 style="margin:0; font-size:16px;">${item.name}</h3>
-                                <small style="color:red; font-weight:700;">LOW STOCK</small>
-                            </div>
-                            <img src="${item.img}" class="item-img">
-                        </div>
-                        <div class="price-list">
-                `;
-
-                stores.forEach(store => {
-                    // Simulating a live price variation
-                    const price = Math.round(item.base * (0.96 + Math.random() * 0.08));
-                    
-                    html += `
-                        <div class="platform-row">
-                            <div class="platform-info">
-                                <span>${store.name}</span>
-                                <small>₹${price}</small>
-                            </div>
-                            <div style="text-align:right">
-                                <a href="${store.url}${item.search}" target="_blank" 
-                                   class="buy-btn" 
-                                   onclick="processSale(${price}, ${store.commission})">
-                                   BUY
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                html += `</div></div>`;
-                list.innerHTML += html;
-            });
-        }
-
-        function processSale(price, rate) {
-            // Calculate Commission for Owner
-            const earned = price * rate;
-            ownerCommission += earned;
-            document.getElementById('owner-money').innerText = ownerCommission.toFixed(2);
-            
-            // Log to console for owner tracking
-            console.log("SALE LOGGED: Commission of ₹" + earned.toFixed(2) + " tracked.");
-        }
-
-        // Press 'o' key to see the owner dashboard
-        window.addEventListener('keydown', (e) => {
-            if(e.key === 'o') document.getElementById('owner-stats').style.display = 'block';
-        });
-
-        renderList();
-    </script>
+    
 <footer class="bottom-bar">
             <div class="input-wrapper">
                 <span class="plus-icon">+</span>
@@ -175,6 +157,6 @@
                 <button class="add-btn" id="addBtn">ADD</button>
             </div>
         </footer>
-        <script src="../../js/shopping/shopping-list.js"></script>
+        <script src="../../pages/shopping/shopping-list.js"></script>
 </body>
 </html>

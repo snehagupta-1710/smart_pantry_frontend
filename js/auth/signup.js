@@ -1,40 +1,51 @@
-async function handleSignup() {
-  const name = document.querySelector('input[type="text"]').value;
-  const email = document.querySelector('input[type="email"]').value;
-  const password = document.querySelector('input[type="password"]').value;
+function handleSignup() {
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
 
   if (!name || !email || !password) {
     alert("All fields are required");
     return;
   }
 
-  try {
-    const res = await fetch("http://localhost:5000/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, password })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      alert(data.message || "Signup failed");
-      return;
-    }
-
-    alert("Signup successful 🎉");
-
-    // smooth transition
-    const card = document.querySelector(".container");
-    card.classList.add("fade-out");
-
-    setTimeout(() => {
-      window.location.href = "../../pages/auth/login.html";
-    }, 400);
-
-  } catch (err) {
-    alert("Server error. Try again later.");
+  // Basic email format check
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    alert("Please enter a valid email address");
+    return;
   }
+
+  // Get existing users
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // Check if email already exists
+  const userExists = users.find(user => user.email === email);
+
+  if (userExists) {
+    alert("Email already registered. Please login.");
+    return;
+  }
+
+  // Create new user object
+  const newUser = {
+    name,
+    email,
+    password
+  };
+
+  users.push(newUser);
+
+  // Save to localStorage
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Signup successful 🎉");
+
+  // Smooth transition
+  const card = document.querySelector(".container");
+  card.classList.add("fade-out");
+
+  setTimeout(() => {
+    window.location.href = "../../pages/auth/login.html";
+  }, 400);
 }

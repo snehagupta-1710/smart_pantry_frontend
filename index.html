@@ -3,52 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Pantry - Freshness Managed</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Smart Pantry - Home</title>
+    <link rel="stylesheet" href="../frontend/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="landing-container">
-        <header class="hero">
-            <nav class="navbar">
-                <div class="logo">Smart<span>Pantry</span></div>
-                <button class="nav-login" ><a href="pages/auth/login.html">Login</a></button>
-            </nav>
 
-            <div class="hero-content">
-                <h1 class="fade-in">Never Run Out of <span class="highlight">Essentials</span> Again.</h1>
-                <p>The smartest way to track your grains, manage stock levels, and get intelligent refill reminders before you hit empty.</p>
-                <button class="cta-btn" onclick="navigateToLogin()">Get Started Free</button>
-            </div>
+    <header class="navbar">
+        <h1 class="logo">Smart Pantry</h1>
+    </header>
+
+    <main class="hero">
+        <p class="tagline">Track food grains, get smart refill reminders, and shop stress-free</p>
+        
+        <div class="phone-mockup">
+            <img src="../frontend/assets/images/phone-mockup.png" alt="Smart Pantry App Interface">
+        </div>
+<a href="../frontend/pages/auth/login.html">
+        <button class="btn-get-started" >Get Started</button>
+</a>
+        <section class="features">
+            <h2>What does the smart pantry work?</h2>
             
-            <div class="hero-image">
-                <img src="https://img.freepik.com/free-vector/pantry-concept-illustration_114360-11756.jpg" alt="Pantry Management">
-            </div>
-        </header>
-
-        <main class="features">
             <div class="feature-card">
-                <div class="f-icon">📊</div>
-                <h3>Inventory Tracking</h3>
-                <p>Monitor every gram of rice, wheat, and pulses in real-time with visual health bars.</p>
+                <i class="fas fa-chart-line"></i>
+                <p>Pantry Dashboard with stock Levels.</p>
             </div>
-            <div class="feature-card">
-                <div class="f-icon">🔔</div>
-                <h3>Smart Alerts</h3>
-                <p>Receive push notifications 3 days before your stock runs out based on your usage.</p>
-            </div>
-            <div class="feature-card">
-                <div class="f-icon">📝</div>
-                <h3>Auto-Shopping List</h3>
-                <p>Your shopping list writes itself based on what’s running low in your pantry.</p>
-            </div>
-        </main>
 
-        <footer class="footer">
-            <p>&copy; 2026 SmartPantry App. All rights reserved.</p>
-        </footer>
-    </div>
+            <div class="feature-card">
+                <i class="fas fa-bell"></i>
+                <p>Low stock alerts and reminder.</p>
+            </div>
 
-    <script src="../frontend/js/index.js"></script>
+            <div class="feature-card">
+                <i class="fas fa-clipboard-list"></i>
+                <p>Auto-generated shopping list.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-exchange-alt"></i>
+                <p>Price comparison</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-coins"></i>
+                <p>Earn credits</p>
+            </div>
+        </section>
+    </main>
+
 </body>
 </html>

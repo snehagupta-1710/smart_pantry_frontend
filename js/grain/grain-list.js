@@ -1,48 +1,41 @@
 /* =========================
-   GLOBAL STATE
+   GLOBAL STATE (Frontend Only)
 ========================= */
-let grains = [];
+let grains = [
+  {
+    _id: "1",
+    name: "Basmati Rice",
+    totalQuantity: 5,
+    currentQuantity: 3.2,
+    dailyUsage: 0.2,
+    reminderDays: 5,
+    lastUpdated: new Date().toISOString()
+  },
+  {
+    _id: "2",
+    name: "Wheat",
+    totalQuantity: 6,
+    currentQuantity: 4.5,
+    dailyUsage: 0.3,
+    reminderDays: 7,
+    lastUpdated: new Date().toISOString()
+  },
+  {
+    _id: "3",
+    name: "Toor Dal",
+    totalQuantity: 3,
+    currentQuantity: 1.2,
+    dailyUsage: 0.1,
+    reminderDays: 3,
+    lastUpdated: new Date().toISOString()
+  }
+];
 
 /* =========================
-   NORMALIZE DATA (VERY IMPORTANT)
+   ON LOAD
 ========================= */
-function normalizeGrain(g) {
-  const total = Number(g.totalQuantity) || 0;
-  const current = Math.min(Number(g.currentQuantity) || 0, total);
-
-  return {
-    _id: g._id,
-    name: g.name || "Item",
-    totalQuantity: total,
-    currentQuantity: current,
-    dailyUsage: Number(g.dailyUsage) || 0,
-    reminderDays: Number(g.reminderDays) || 0,
-    lastUpdated: g.lastUpdated || new Date().toISOString()
-  };
-}
-
-/* =========================
-   ON LOAD – AUTH + FETCH
-========================= */
-document.addEventListener("DOMContentLoaded", async () => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    window.location.href = "../../pages/auth/login.html";
-    return;
-  }
-
-  try {
-    const res = await fetch("http://localhost:5000/api/grains", {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-
-    const data = await res.json();
-    grains = data.map(normalizeGrain);
-
-    renderList();
-  } catch (err) {
-    console.error("Load error:", err);
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  renderList();
 });
 
 /* =========================
@@ -53,6 +46,7 @@ function renderList() {
   if (!list) return;
 
   list.innerHTML = grains.map((g, index) => {
+
     const usedPercent =
       g.totalQuantity > 0
         ? Math.round(
@@ -101,9 +95,11 @@ function openDetailPage(index) {
 
   detailView.innerHTML = `
     <header class="top-nav">
-      <button class="back-btn" onclick="closeDetailPage()"><button class="back-btn" onclick="history.back()">
+      <button class="back-btn" onclick="closeDetailPage()">
+        <button class="back-btn" onclick="history.back()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button></button>
+            </button>
+      </button>
       <h1>${g.name}</h1>
     </header>
 
@@ -140,12 +136,12 @@ function openDetailPage(index) {
     </div>
 
     <button class="detail-btn btn-edit"
-      onclick="editQuantity('${g._id}', ${index})">
+      onclick="editQuantity(${index})">
       ✎ Update Remaining Stock
     </button>
 
     <button class="detail-btn btn-refill"
-      onclick="editReminder('${g._id}', ${index})">
+      onclick="editReminder(${index})">
       📅 Set Reminder
     </button>
   `;
@@ -163,9 +159,9 @@ function closeDetailPage() {
 }
 
 /* =========================
-   EDIT QUANTITY
+   EDIT QUANTITY (Frontend Only)
 ========================= */
-async function editQuantity(id, index) {
+function editQuantity(index) {
   const input = prompt(
     "Enter new quantity (kg):",
     grains[index].currentQuantity
@@ -178,28 +174,17 @@ async function editQuantity(id, index) {
     return;
   }
 
-  const token = localStorage.getItem("token");
-
-  const res = await fetch(`http://localhost:5000/api/grains/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ currentQuantity: qty })
-  });
-
-  const updated = normalizeGrain(await res.json());
-  grains[index] = updated;
+  grains[index].currentQuantity = qty;
+  grains[index].lastUpdated = new Date().toISOString();
 
   openDetailPage(index);
   renderList();
 }
 
 /* =========================
-   EDIT REMINDER
+   EDIT REMINDER (Frontend Only)
 ========================= */
-async function editReminder(id, index) {
+function editReminder(index) {
   const input = prompt(
     "Remind me after how many days?",
     grains[index].reminderDays
@@ -212,19 +197,6 @@ async function editReminder(id, index) {
     return;
   }
 
-  const token = localStorage.getItem("token");
-
-  const res = await fetch(`http://localhost:5000/api/grains/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ reminderDays: days })
-  });
-
-  const updated = normalizeGrain(await res.json());
-  grains[index] = updated;
-
+  grains[index].reminderDays = days;
   openDetailPage(index);
 }
